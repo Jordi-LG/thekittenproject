@@ -19,8 +19,8 @@
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">S'inscrire / Se connecter</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <center>
-                <a class="dropdown-item"> <%= link_to "Inscription", new_user_registration_path %></a>
-                <a class="dropdown-item"> <%= link_to "Se connecter", new_user_session_path %></a>
+                <div class="dropdown-item"> <%= link_to "Inscription", new_user_registration_path %></div>
+                <div class="dropdown-item"> <%= link_to "Se connecter", new_user_session_path %></div>
               </center>
             </div>    
           </div>
@@ -32,8 +32,8 @@
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
                 <center>
-                  <a class="dropdown-item">Mon profil</a>
-                  <a class="dropdown-item"> <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></a>
+                  <div class="dropdown-item">Mon profil</div>
+                  <div class="dropdown-item"> <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></div>
                 </center>
               </div>
           </div>
