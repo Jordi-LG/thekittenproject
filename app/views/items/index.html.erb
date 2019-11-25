@@ -3,7 +3,9 @@
 <div class = "container">
   <div class="card-columns">
     <% @items.each do |item| %>
+      <%= link_to item_path(item.id) do%>
         <img src="<%= item.image_url %>" alt="..." class="card-img-top p-2">
+      <% end %>
     <% end %>
   </div>
 </div>
