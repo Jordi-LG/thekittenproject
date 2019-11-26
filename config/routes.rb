@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'registrations/create'
 	root :to =>  "items#index"
 	resources :items, only: [:index, :show]
   devise_for :users
