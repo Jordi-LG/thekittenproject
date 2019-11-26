@@ -1,14 +1,14 @@
 class CartsController < ApplicationController
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart = current_user_cart
     @items = all_items
   end
 
   def update
     if current_user
       cart_exist?
-      @cart = current_user_card
+      @cart = current_user_cart
       @item = current_item
 
       if JoinCartItem.exists?(item_id: @item.id, cart_id: @cart.id) == false
@@ -34,7 +34,7 @@ class CartsController < ApplicationController
     end
   end
 
-  def current_user_card
+  def current_user_cart
     Cart.find_by(user_id: current_user.id)
   end
 
