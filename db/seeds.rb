@@ -39,6 +39,8 @@ Order.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('orders')
 User.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
+JoinOrderItem.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('join_order_items')
 
 
 5.times do |i|
