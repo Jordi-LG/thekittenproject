@@ -38,9 +38,11 @@
                       </div>
                       <!-- BUTTON DELETE -->
                       <div class="col-4 text-right align-self-center" >
-                          <button type="submit" class="btn btn-danger shadow-sm">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                          </button>
+                        <%= form_with(url: cart_path(item.id), method: 'delete') do %>
+                          <%= button_tag(type: "submit", class:"btn btn-danger shadow-sm") do %>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          <% end %>
+                        <% end %>
                       </div>
                   </div>
               </div>
@@ -51,9 +53,9 @@
             <div class="card-footer" style="d-flex ; height: 6em; ">
                 <div class="float-right">
                     <div style="margin: 5px">
-                        Total price: <b><%=  %> €</b>
+                        Total price: <b><%= @items_price.sum %> €</b>
                     </div>
-                    <a href="#" class="btn btn-success float-right"><span><i class="fas fa-paw" style="pr-4"></i></span> Checkout</a>
+                    <a href="#" class="btn btn-success float-right"><span style="mr-4"><i class="fas fa-paw"></i></span> Commander</a>
                 </div>
             </div>
 
