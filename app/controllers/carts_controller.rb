@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart = current_user_cart
     @items = all_items
     @items_price = only_price_array
   end
