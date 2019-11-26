@@ -1,2 +1,62 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="jumbotron-cart">
+  <h2 class="display-1 banner text-light">Mon panier</h2>
+</div>
+
+<div class="container">
+   <div class="card m-4 shadow-lg">
+            <div class="card-header bg-dark text-light">
+              <h4>  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                 Mes articles
+                 <%= link_to items_path do %>
+                  <div class="btn btn-info btn-sm float-right">
+                    Continuer le shopping
+                  </div>
+                <%end%>
+              </h4>
+            </div>
+
+            <div class="card-body">
+
+            <% @items.each do |item| %>
+              <!-- PRODUCT -->
+              <div class="row">
+                  <div class="col-12 col-sm-12 col-md-2 text-center">
+                    <img class="img-responsive shadow" src="<%= item.image_url %>" alt="prewiew" width="120" height="80">
+                  </div>
+                  <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                    <%= link_to item_path(item.id) do%>
+                      <h4 class="product-name"><strong><%= item.title %></strong></h4>
+                      <h4><small><%= item.description %></small></h4>
+                    <% end %>
+                  </div>
+                  <div class="col-8  col-md-4 justify-content-between  row ">
+                      <div class="col-4 text-md-right align-self-center" style="padding-top: 5px; ">
+                          <h6 class="text-muted"><strong><%= item.price %> €</strong></h6>
+                      </div>
+                      <div class="col-4 text-md-right align-self-center" style="padding-top: 5px;">
+                          <h6 class="text-muted">x 1</h6>
+                      </div>
+                      <!-- BUTTON DELETE -->
+                      <div class="col-4 text-right align-self-center" >
+                          <button type="submit" class="btn btn-danger shadow-sm">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <hr>
+            <!-- END PRODUCT -->
+            <% end %>
+
+            <div class="card-footer" style="d-flex ; height: 6em; ">
+                <div class="float-right">
+                    <div style="margin: 5px">
+                        Total price: <b><%=  %> €</b>
+                    </div>
+                    <a href="#" class="btn btn-success float-right"><span><i class="fas fa-paw" style="pr-4"></i></span> Checkout</a>
+                </div>
+            </div>
+
+        </div>
+  </div>
+</div>
