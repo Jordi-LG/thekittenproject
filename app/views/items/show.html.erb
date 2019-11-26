@@ -1,22 +1,40 @@
+<% if flash[:alerte] %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <h3><%= flash[:alerte] %></h3>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<% if flash[:succes] %>
+  <div class="alert alert-dismissible alert-success">
+    <h3><%= flash[:succes] %></h3>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% end %>
+
 <div class="container mt-4" >
-  <div class="card shadow-lg"">
-  <div class="row banniere">
-    <div class="col-8">
+  <div class="card shadow-lg">
+    <div class="row banniere">
+      <div class="col-8">
         <img  src="<%= @item.image_url %>" style="height: auto;width: 100%;">
     </div>
     <div class="col-4 d-flex row flex-column">
       <div class="container mt-4">
         <h1><%= @item.title %> </h1>
         <h4><%= @item.description %></h4>
-            </div>
+      </div>
 
-<div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
-  <span class="badge badge-pill badge-success  pt-2"><h5><%= @item.price %> €</h5></span>
+      <div class="modal-footer mt-auto p-2 bd-highligh justify-content-between">
+        <span class="badge badge-pill badge-success  pt-2"><h5><%= @item.price %> €</h5></span>
 
-  <span class="btn btn-button btn-primary"><i class="fas fa-cart-arrow-down pr-2"></i> Add to cart !</span>
-
-  </div>
-</div>
+        <%= form_with(url: cart_path, method: 'patch') do %>
+          <%= button_tag(type: "submit", class: "btn btn-default") do %>
+            <span class="btn btn-button btn-primary"><i class="fas fa-cart-arrow-down pr-2"></i> Add to cart !</span>
+          <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>

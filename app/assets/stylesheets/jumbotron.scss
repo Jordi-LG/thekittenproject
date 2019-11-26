@@ -1,3 +1,15 @@
 .jumbotron {
   background-image: url(asset-path("chat-langue-chaton.jpg"));
 }
+
+.jumbotron-cart {
+  height: 300px;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #073642;
+  background-image: url("https://img4.goodfon.com/wallpaper/nbig/d/56/koshka-kotenok-kotionok-belyi-korzinka-fon-chumazik-malenkii.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: 3px 3px black;
+}
