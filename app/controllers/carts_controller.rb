@@ -8,7 +8,6 @@ class CartsController < ApplicationController
 
   def update
     if current_user
-      cart_exist?
       @cart = current_user_cart
       @item = current_item
 
@@ -37,11 +36,6 @@ class CartsController < ApplicationController
   private
   ##########################
   #METHODES POUR UPDATE
-  def cart_exist?
-    if Cart.exists?(user_id: current_user.id) == false
-      Cart.create(user_id: current_user.id)
-    end
-  end
 
   def current_user_cart
     Cart.find_by(user_id: current_user.id)
