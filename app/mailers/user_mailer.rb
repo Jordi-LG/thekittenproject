@@ -20,14 +20,7 @@ class UserMailer < ApplicationMailer
     @item_image = joinorderitem.item.image_url
     @item_title = joinorderitem.item.title
     @item_description = joinorderitem.item.description
-
-
-
-
     @user = User.find(@user.id)
-  
-  	
-
   	mail(to: @user.email, subject: 'Merci pour votre commande')
   	
   end
