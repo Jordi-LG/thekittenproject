@@ -1,0 +1,7 @@
+<li class="nav-item active mr-4 pr-4" >
+<%= link_to cart_path(current_user.id) do%>
+  <i class="fas fa-shopping-cart fa-2x "></i>
+<% end %>
+<span class="badge badge-pill badge-secondary">  <%= current_user.cart.items.length %></span>
+
+</li>

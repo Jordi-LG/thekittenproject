@@ -3,7 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+
 gem 'letter_opener'
+
+gem 'stripe'
+
 gem "aws-sdk-s3", require: false #gem for amazon
 gem 'dotenv-rails'
 gem 'table_print'
@@ -67,3 +71,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.7"
+
+gem "jquery-rails", "~> 4.3"

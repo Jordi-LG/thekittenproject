@@ -5,20 +5,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active mr-4 pr-4">
+      <ul class="navbar-nav ml-auto"id='number'>
+        <li class="nav-item active mr-4 pr-4" >
           <% if current_user == nil %>
             <%= link_to new_user_session_path do%>
               <i class="fas fa-shopping-cart fa-2x "></i>
             <% end%>
           <%else%>
-            <% if Cart.find_by(user_id: current_user.id) == nil %>
-            <%else%>
             <%= link_to cart_path(current_user.id) do%>
               <i class="fas fa-shopping-cart fa-2x "></i>
             <% end %>
-            <% end %>
-            <% end %>
+            <% if current_user.cart.items.length > 0 %>
+
+             <span class="badge badge-pill badge-secondary">  <%= current_user.cart.items.length %></span>
+           <% end %>
+          <% end %>
         </li>
       </ul>
 
