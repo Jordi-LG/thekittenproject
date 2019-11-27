@@ -24,4 +24,10 @@ class UserMailer < ApplicationMailer
   	mail(to: @user.email, subject: 'Merci pour votre commande')
   	
   end
+
+  def admin_alert(joinorderitem)
+  	@order = joinorderitem.order
+  	@user = joinorderitem.order.user
+  	mail(to: "terence@yopmail.com", subject: 'Une nouvelle commande a été validé')
+  end
 end
