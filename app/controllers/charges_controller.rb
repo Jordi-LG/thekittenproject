@@ -19,10 +19,27 @@ class ChargesController < ApplicationController
       currency: 'eur',
     })
 
+      @new_order = Order.create(user_id: current_user.id)
+      @order = Order.last
+
+      @items = all_items
+      @items.each do |item|
+        JoinOrderItem.create(order_id: @order.id, item_id: item.id)
+      end
+
+      if @new_order.save
+        destroy
+        redirect_to root_path
+      end
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
   end
-  render root_path
-  flash[:success] = "Merci pour votre achat !"
+
+  def destroy
+    cu = Cart.find_by(user_id: current_user.id)
+    JoinCartItem.where(cart_id: cu.id).destroy_all
+  end
+
 end

@@ -55,19 +55,24 @@
                     <div style="margin: 5px">
                         Total price: <b><%= @items_price.sum %> €</b>
                     </div>
-                    <%= form_with(url: charges_path, method: 'create') do %>
-                    <% if flash[:error].present? %>
-                      <div id="error_explanation">
-                        <p><%= flash[:error] %></p>
-                      </div>
-                    <% end %>
-                        <span style="mr-4"><i class="fas fa-paw"></i> Commander </span>
+                    <%= form_with(url: cart_charges_path(cart_id: params[:id])) do %>
+                      <% if flash[:error].present? %>
+                        <div id="error_explanation">
+                          <p><%= flash[:error] %></p>
+                        </div>
+                      <% end %>
+
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                data-description="Validez votre achat ! de <%= @items_price.sum %>"
-                                data-amount="<%= @items_price.sum %>"
-                                data-locale="auto"></script>
-                      <% end %>
+                                data-description="Validez votre achat de <%= @items_price.sum %> € !"
+                                data-amount="<%= @items_price.sum * 100%>"
+                                data-locale="auto">
+                              </script>
+                        <script>
+                          document.getElementByClassName("stripe-button-el")[0].style.display = "none";
+                        </script>
+                        <button type="submit" class="btn btn-success" style="mr-4"><i class="fas fa-paw"></i>  Commander</button>
+                    <% end %>
                 </div>
             </div>
 
