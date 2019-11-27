@@ -41,9 +41,11 @@ User.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 JoinOrderItem.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('join_order_items')
+JoinCartItem.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('join_cart_items')
 
 
-5.times do |i|
+1.times do |i|
 	u = User.new(password: "123456")
 	  u.email = "user#{i+1}" + "@yopmail.com"
     u.save
@@ -57,16 +59,3 @@ i=0
     item.save
 end
 puts "Items created"
-
-
-
-1.times do
-	c = Cart.create(user_id: rand(1..5))
-end
-puts "Cart created"
-
-
-1.times do |i|
-	Order.create(user_id: 1)
-end
-puts "Order created"
