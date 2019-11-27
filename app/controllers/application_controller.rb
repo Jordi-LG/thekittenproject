@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	include CartsHelper
+	
+	rescue_from ActionController::RoutingError do |exception|
+		flash[:error] = "There is no such route"
+		redirect_to root_path
+	end
 end
