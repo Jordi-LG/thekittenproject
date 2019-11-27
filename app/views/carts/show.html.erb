@@ -19,7 +19,8 @@
 
             <% @items.each do |item| %>
               <!-- PRODUCT -->
-              <div class="row">
+              <div id=id="item-<%= item.id%>">
+              <div class="row num" >
                   <div class="col-12 col-sm-12 col-md-2 text-center">
                     <img class="img-responsive shadow" src="<%= item.image_url %>" alt="prewiew" width="120" height="80">
                   </div>
@@ -45,6 +46,7 @@
                         <% end %>
                       </div>
                   </div>
+              </div>
               </div>
               <hr>
             <!-- END PRODUCT -->
