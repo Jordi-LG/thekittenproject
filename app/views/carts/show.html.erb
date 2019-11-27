@@ -3,83 +3,87 @@
 </div>
 
 <div class="container">
-   <div class="card m-4 shadow-lg">
-            <div class="card-header bg-dark text-light">
-              <h4>  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                 Mes articles
-                 <%= link_to items_path do %>
-                  <div class="btn btn-info btn-sm float-right">
-                    Continuer le shopping
-                  </div>
-                <%end%>
-              </h4>
+  <div class="card m-4 shadow-lg">
+    <div class="card-header bg-dark text-light">
+      <h4>  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+         Mes articles
+         <%= link_to items_path do %>
+          <div class="btn btn-info btn-sm float-right">
+            Continuer le shopping
+          </div>
+        <%end%>
+      </h4>
+    </div>
+
+    <div class="card-body">
+      <% if current_user.cart.items.empty? == false %>
+        <% @items.each do |item| %>
+          <!-- PRODUCT -->
+          <div id=id="item-<%= item.id%>">
+          <div class="row num" >
+            <div class="col-12 col-sm-12 col-md-2 text-center">
+              <img class="img-responsive shadow" src="<%= item.image_url %>" alt="prewiew" width="120" height="80">
             </div>
-
-            <div class="card-body">
-            <% if current_user.cart.items.empty? == false %>
-              <% @items.each do |item| %>
-                <!-- PRODUCT -->
-                <div id=id="item-<%= item.id%>">
-                <div class="row num" >
-                    <div class="col-12 col-sm-12 col-md-2 text-center">
-                      <img class="img-responsive shadow" src="<%= item.image_url %>" alt="prewiew" width="120" height="80">
-                    </div>
-                    <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                      <%= link_to item_path(item.id) do%>
-                        <h4 class="product-name"><strong><%= item.title %></strong></h4>
-                        <h4><small><%= item.description %></small></h4>
-                      <% end %>
-                    </div>
-                    <div class="col-8  col-md-4 justify-content-between  row ">
-                        <div class="col-4 text-md-right align-self-center" style="padding-top: 5px; ">
-                            <h6 class="text-muted"><strong><%= item.price %> €</strong></h6>
-                        </div>
-                        <div class="col-4 text-md-right align-self-center" style="padding-top: 5px;">
-                            <h6 class="text-muted">x 1</h6>
-                        </div>
-                        <!-- BUTTON DELETE -->
-                        <div class="col-4 text-right align-self-center" >
-                          <%= form_with(url: cart_path(item.id), method: 'delete') do %>
-                            <%= button_tag(type: "submit", class:"btn btn-danger shadow-sm") do %>
-                              <i class="fa fa-trash" aria-hidden="true"></i>
-                            <% end %>
-                          <% end %>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <hr>
-              <!-- END PRODUCT -->
+            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+              <%= link_to item_path(item.id) do%>
+                <h4 class="product-name"><strong><%= item.title %></strong></h4>
+                <h4><small><%= item.description %></small></h4>
               <% end %>
-
-              <div class="card-footer" style="d-flex ; height: 6em; ">
-                  <div class="float-right">
-                      <div style="margin: 5px">
-                          Total price: <b><%= @items_price.sum %> €</b>
-                      </div>
-                      <%= form_with(url: cart_charges_path(cart_id: params[:id])) do %>
-                        <% if flash[:error].present? %>
-                          <div id="error_explanation">
-                            <p><%= flash[:error] %></p>
-                          </div>
-                        <% end %>
-
-                          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                  data-description="Validez votre achat de <%= @items_price.sum %> € !"
-                                  data-amount="<%= @items_price.sum * 100%>"
-                                  data-locale="auto">
-                                </script>
-                          <script>
-                            document.getElementByClassName("stripe-button-el")[0].style.display = "none";
-                          </script>
-                          <button type="submit" class="btn btn-success" style="mr-4"><i class="fas fa-paw"></i>  Commander</button>
-                      <% end %>
-                  </div>
+            </div>
+            <div class="col-8  col-md-4 justify-content-between  row ">
+              <div class="col-4 text-md-right align-self-center" style="padding-top: 5px; ">
+                <h6 class="text-muted"><strong><%= item.price %> €</strong></h6>
               </div>
-              <% else %>
-              <i> Panier vide </i>
+              <div class="col-4 text-md-right align-self-center" style="padding-top: 5px;">
+                  <h6 class="text-muted">x 1</h6>
+              </div>
+              <!-- BUTTON DELETE -->
+              <div class="col-4 text-right align-self-center" >
+                <%= form_with(url: cart_path(item.id), method: 'delete') do %>
+                  <%= button_tag(type: "submit", class:"btn btn-danger shadow-sm") do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          </div>
+          <hr>
+        <!-- END PRODUCT -->
+        <% end %>
+
+        <div class="card-footer" style="d-flex ; height: 6em; ">
+          <div class="float-right">
+            <div style="margin: 5px">
+                Total price: <b><%= @items_price.sum %> €</b>
+            </div>
+            <!-- FORMULAIRE CONNECTE A STRIPE POUR PAIEMENT COMMANDE -->
+            <%= form_with(url: cart_charges_path(cart_id: params[:id])) do %>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Validez votre achat de <%= @items_price.sum %> € !"
+                  data-amount="<%= @items_price.sum * 100%>"
+                  data-locale="auto">
+              </script>
+              <!-- SCRIPT JQUERY POUR ENLEVER LE BUTTON STRIPE DE BASE + REMPLACE PAR LE NOTRE -->
+              <script type="text/javascript">
+                $(document).ready(function(){
+                    $(".stripe-button-el span").remove();
+                    $("button.stripe-button-el").removeAttr('style');
+                });
+              </script>
+              <button type="submit" class="btn btn-success" style="mr-4"><i class="fas fa-paw"></i>  Commander</button>
             <% end %>
+          </div>
         </div>
+      <% else %>
+        <i> Panier vide </i>
+      <% end %>
+    </div>
   </div>
 </div>

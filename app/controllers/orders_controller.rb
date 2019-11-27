@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+
+
   def new
     @order = Order.new
   end
@@ -22,6 +24,7 @@ class OrdersController < ApplicationController
     cu = Cart.find_by(user_id: current_user.id)
     JoinCartItem.where(cart_id: cu.id).destroy_all
   end
+
 
 private
   def last_order
