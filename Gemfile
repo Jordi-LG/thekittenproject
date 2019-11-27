@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'letter_opener'
 gem "aws-sdk-s3", require: false #gem for amazon
 gem 'dotenv-rails'
 gem 'table_print'

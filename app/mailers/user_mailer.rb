@@ -11,4 +11,24 @@ class UserMailer < ApplicationMailer
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
   end
+
+  def after_order(joinorderitem)
+
+
+    @order = joinorderitem.order
+    @user = joinorderitem.order.user
+    @item_image = joinorderitem.item.image_url
+    @item_title = joinorderitem.item.title
+    @item_description = joinorderitem.item.description
+
+
+
+
+    @user = User.find(@user.id)
+  
+  	
+
+  	mail(to: @user.email, subject: 'Merci pour votre commande')
+  	
+  end
 end
