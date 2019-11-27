@@ -68,16 +68,9 @@
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                   data-description="Validez votre achat de <%= @items_price.sum %> € !"
                   data-amount="<%= @items_price.sum * 100%>"
-                  data-locale="auto">
+                  data-locale="auto"
+                  data-label="Commander">
               </script>
-              <!-- SCRIPT JQUERY POUR ENLEVER LE BUTTON STRIPE DE BASE + REMPLACE PAR LE NOTRE -->
-              <script type="text/javascript">
-                $(document).ready(function(){
-                    $(".stripe-button-el span").remove();
-                    $("button.stripe-button-el").removeAttr('style');
-                });
-              </script>
-              <button type="submit" class="btn btn-success" style="mr-4"><i class="fas fa-paw"></i>  Commander</button>
             <% end %>
           </div>
         </div>
