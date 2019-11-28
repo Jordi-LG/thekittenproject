@@ -43,6 +43,8 @@ JoinOrderItem.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('join_order_items')
 JoinCartItem.all.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('join_cart_items')
+AdminUser.all.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('admin_users')
 
 
 1.times do |i|
