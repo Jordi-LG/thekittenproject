@@ -75,3 +75,7 @@ En tant que visiteur, il faut se créer un compte pour valider sa commande
 
 
 2. Dashboard Admin
+  * Controle sur l'ensemble du site (gestion user, gestion item, voir les commandes)
+
+3. Ajout en plusieurs exemplaires d'un même produit depuis sa page show ou la page du panier
+  (Possible bug du bouton qui renvoie une erreur dans la console, mais cause indéterminé)
