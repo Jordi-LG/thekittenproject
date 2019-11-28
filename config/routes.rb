@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 	root :to =>  "items#index"
 	resources :items, only: [:index, :show], path: :image
   devise_for :users, path: :profil

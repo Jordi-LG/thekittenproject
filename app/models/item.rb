@@ -8,6 +8,6 @@ class Item < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true,
-                    format: { with: /\A\d+(\.\d{2})?\z/ }, numericality: { greater_than: 0, less_than: 1000000 }
+                    format: { with: /\A\d+(\.\d{2})?\z/ }, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000 }
   validates :image_url, presence: true
 end
