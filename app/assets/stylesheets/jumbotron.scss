@@ -18,7 +18,7 @@
   box-shadow: 4px 3px 5px 5px #b55c8c;
   border: 2px solid #772953;
   border-radius: 5px;
-padding:-10px;
+padding:0px;
 
 }
 
@@ -26,6 +26,31 @@ padding:-10px;
   box-shadow: 2px 1px 3px #b55c8c;
   border: 1px solid #772953;
   border-radius: 5px;
-padding:-10px;
+padding:0px;
 
+}
+
+.bgi
+{
+  background-image: url("https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/photo-1516541196182-6bdb0516ed27.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bdi{
+  background-color: white;
+  border: 2px solid #772953;
+  border-radius: 5px;
+  padding:20px 20% 20px 20%;
+  opacity:70%;
+}
+
+.bdi:hover{
+  box-shadow: 4px 3px 5px 5px #b55c8c;
+  background-color: white;
+  border: 2px solid #772953;
+  border-radius: 5px;
+  opacity:85%;
+  margin-top: -10px;
+  margin-left: -10px;
 }

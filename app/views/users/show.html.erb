@@ -3,7 +3,7 @@
   <h1>Mon profil</h1>
   <!-- INFORMATION SUR L'UTILISATEUR -->
 
-  	<div class= 'border border-white mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
+  	<div class= 'border border-info mt-4 pt-4 pl-2' style="max-width: 50rem; font-size: 18px;">
     	<p>
       	<u>Prénom</u>: <%= @user.first_name %><br>
       	<u>Nom</u>: <%= @user.last_name %><br>
@@ -12,7 +12,7 @@
 
 	  </div>
 		  <%= link_to edit_user_registration_path do %>
-				<button type="button" class="btn btn-warning mt-4">Editer votre compte </button>
+				<button type="button" class="btn-lg btn-warning mt-4">Editer votre compte </button>
 			<% end %>
 </div>
 <br>
