@@ -28,6 +28,9 @@ class ChargesController < ApplicationController
       end
 
       if @new_order.save
+        @current_email = current_user.email
+        UserMailer.after_order(@current_email, @new_order).deliver_now
+        UserMailer.admin_alert(current_user, @new_order).deliver_now
         destroy
         redirect_to root_path
       end
