@@ -16,7 +16,7 @@
     </div>
 
     <div class="card-body">
-      <% if current_user.cart.items.empty? == false %>
+      <% if current_or_guest_user.cart.items.empty? == false %>
         <% @items.each do |item| %>
           <!-- PRODUCT -->
           <div id=id="item-<%= item.id%>">
@@ -54,24 +54,35 @@
 
         <div class="card-footer" style="d-flex ; height: 6em; ">
           <div class="float-right">
-            <div style="margin: 5px">
-                Total price: <b><%= @items_price.sum %> €</b>
-            </div>
-            <!-- FORMULAIRE CONNECTE A STRIPE POUR PAIEMENT COMMANDE -->
-            <%= form_with(url: cart_charges_path(cart_id: params[:id])) do %>
-              <% if flash[:error].present? %>
-                <div id="error_explanation">
-                  <p><%= flash[:error] %></p>
+            <%if current_or_guest_user %>
+              <%if current_user %>
+                <div style="margin: 5px">
+                    Total price: <b><%= @items_price.sum %> €</b>
                 </div>
-              <% end %>
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Validez votre achat de <%= @items_price.sum %> € !"
-                  data-amount="<%= @items_price.sum * 100%>"
-                  data-locale="auto"
-                  data-label="Commander">
-              </script>
-            <% end %>
+                <!-- FORMULAIRE CONNECTE A STRIPE POUR PAIEMENT COMMANDE -->
+                <%= form_with(url: cart_charges_path(cart_id: params[:id])) do %>
+                  <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                    </div>
+                  <% end %>
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-description="Validez votre achat de <%= @items_price.sum %> € !"
+                      data-amount="<%= @items_price.sum * 100%>"
+                      data-locale="auto"
+                      data-label="Commander">
+                  </script>
+                <% end %>
+              <%else%>
+                <%= link_to new_user_session_path do %>
+                  <button type="button" class="btn btn-lg btn-info">Se connecter</button>
+                <%end%>
+                <%= link_to new_user_registration_path do %>
+                  <button type="button" class="btn btn-lg btn-warning">S'inscrire</button>
+                <%end%>
+              <%end%>
+            <%end%>
           </div>
         </div>
       <% else %>

@@ -1,6 +1,6 @@
 module CartsHelper
   def all_items
-    u = current_user
+    u = current_or_guest_user
     cu = Cart.find_by(user_id: u.id)
     @items = []
 

@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
 
   def show
     @cart = current_user_cart
@@ -8,7 +7,6 @@ class CartsController < ApplicationController
   end
 
   def update
-    if current_user
       @cart = current_user_cart
       @item = current_item
 
@@ -25,16 +23,12 @@ class CartsController < ApplicationController
         flash[:alerte] = "Déjà dans le panier"
         redirect_to(item_path(@item))
       end
-
-    else
-      redirect_to new_user_session_path
-    end
   end
 
   def destroy
     JoinCartItem.delete(selected_item_in_cart)
 
-    redirect_to cart_path(Cart.find_by(user_id: current_user.id).id)
+    redirect_to cart_path(Cart.find_by(user_id: current_or_guest_user.id).id)
   end
 
   private
@@ -42,7 +36,7 @@ class CartsController < ApplicationController
   #METHODES POUR UPDATE
 
   def current_user_cart
-    Cart.find_by(user_id: current_user.id)
+    Cart.find_by(user_id: current_or_guest_user.id)
   end
 
   def current_item
@@ -66,7 +60,7 @@ class CartsController < ApplicationController
   #########################
   #METHODE DELETE
   def selected_item_in_cart
-    cu = Cart.find_by(user_id: current_user.id)
+    cu = Cart.find_by(user_id: current_or_guest_user.id)
     return JoinCartItem.find_by(cart_id: cu.id, item_id: params[:id])
   end
 
