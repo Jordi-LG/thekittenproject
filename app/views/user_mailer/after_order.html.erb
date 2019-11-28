@@ -6,15 +6,14 @@
   <body>
     <h1>Merci pour votre commande !</h1>
     <p>
-      Voici le recapitulatif de votre commande n°<%=@order.id%>
+      Voici le recapitulatif de votre commande n°<%=@current_order.id%>
     </p>
     <p>
-    	Titre : <%=@item_title%>
-    	<br><br>
-    	Description : <%=@item_description%>
-    	<br><br>
-		<img src = "<%=@item_image%>">
+      <%@current_order.items.each do |item|%>
+      <img src = "<%=item.image_url%>">
+      <%end%>
     </p>
     <p> À très vite sur The Kitten Project !</p>
   </body>
 </html>
+

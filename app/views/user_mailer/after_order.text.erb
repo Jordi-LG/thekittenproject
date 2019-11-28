@@ -1,8 +1,9 @@
 Merci pour votre commande !
 ==========================================================
  
-Voici le recapitulatif de votre commande n°<%=@order.id%>
-Titre : <%=@item_title%>
-Description : <%=@item_description%>
-<img src = "<%=@item_image%>"> 
+Voici le recapitulatif de votre commande n°<%=@current_order.id%>
+<%@current_order.items.each do |item|%>
+
+<img src = "<%=item.image_url%>">
+<%end%>
 À très vite sur The Kitten Project !

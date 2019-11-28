@@ -12,22 +12,18 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
   end
 
-  def after_order(joinorderitem)
+  def after_order(email, order)
 
-
-    @order = joinorderitem.order
-    @user = joinorderitem.order.user
-    @item_image = joinorderitem.item.image_url
-    @item_title = joinorderitem.item.title
-    @item_description = joinorderitem.item.description
-    @user = User.find(@user.id)
-  	mail(to: @user.email, subject: 'Merci pour votre commande')
+        @current_order = order
+       
+  	mail(to: email, subject: 'Merci pour votre commande')
   	
   end
 
-  def admin_alert(joinorderitem)
-  	@order = joinorderitem.order
-  	@user = joinorderitem.order.user
+  def admin_alert(current_user, order)
+
+    @user = current_user
+  	@order = order
   	mail(to: "terence@yopmail.com", subject: 'Une nouvelle commande a été validé')
   end
 end

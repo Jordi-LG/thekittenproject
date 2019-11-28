@@ -34,7 +34,7 @@
                         </thead>
                         <tbody>
                             <% @items.sort.each do |item| %>
-                            <tr>
+                            <tr class="cardt">
                                 <td><img class="img-responsive shadow" src="<%= item.image_url %>" alt="prewiew" width="120" height="80" /> </td>
                                 <td>
                                   <%= link_to item_path(item.id) do%>
@@ -46,6 +46,7 @@
                                 <td id="id-<%=item.id%>" class="text-center text-muted"> <%= select_item_quantity(item).quantity %></td>
                                 <td id="price-<%=item.id%>" class="text-center text-muted"> <%= (select_item_quantity(item).quantity) * (item.price) %> €</td>
                                 <td class="text-center d-flex justify-content-around">
+                                    <!-- BUTTON ADD ITEM -->
                                   <div>
                                     <%= form_with(url: cart_path(item.id), method: 'patch') do %>
                                       <%= button_tag(type: "submit", class:"btn btn-success shadow-sm") do %>
@@ -53,6 +54,7 @@
                                       <% end %>
                                     <% end %>
                                   </div>
+                                  <!-- BUTTON DELETE -->
                                   <div>
                                     <%= form_with(url: cart_path(item.id), method: 'delete') do %>
                                       <%= button_tag(type: "submit", class:"btn btn-danger shadow-sm") do %>
