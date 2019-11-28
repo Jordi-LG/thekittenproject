@@ -7,4 +7,9 @@ Utilisateur n°<%=@user.id%>
 
 Email utilisateur : <%=@user.email%>
 
+      <%@order.items.each do |item|%>
+
+    <img src = "<%=item.image_url%>">
+    <%end%>
+
 À très vite sur The Kitten Project !</p>
