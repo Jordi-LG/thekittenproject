@@ -67,11 +67,11 @@ h1.ml8 {
 
 .ml8 .letters-container {
   position: absolute;
-  left: 0;
+  left: 1100px;
   right: 0;
   margin: auto;
   top: 0;
-  bottom: 0;
+  bottom: 500px;
   height: 1em;
 }
 
@@ -92,11 +92,11 @@ h1.ml8 {
 
 .ml8 .circle {
   position: absolute;
-  left: 0;
+  left: 1100px;
   right: 0;
   margin: auto;
   top: 0;
-  bottom: 0;
+  bottom: 500px;
 }
 
 .ml8 .circle-white {
@@ -115,10 +115,14 @@ h1.ml8 {
 }
 
 .ml8 .circle-dark-dashed {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   border-radius: 2.4em;
   background-color: transparent;
   border: 2px dashed #772953;
   width: 2.3em;
   height: 2.3em;
-  animation-iteration-count: 1;
 }
