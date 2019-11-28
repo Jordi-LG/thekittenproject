@@ -2,6 +2,6 @@
 <%= link_to cart_path(current_or_guest_user.id) do%>
   <i class="fas fa-shopping-cart fa-2x "></i>
 <% end %>
-<span class="badge badge-pill badge-secondary">  <%= current_or_guest_user.cart.items.length %></span>
+<span class="badge badge-pill badge-secondary">  <%= cart_quantity_item_array.sum %></span>
 
 </li>

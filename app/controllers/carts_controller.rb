@@ -4,25 +4,36 @@ class CartsController < ApplicationController
     @cart = current_user_cart
     @items = all_items
     @items_price = only_price_array
+    @quantity_array = cart_quantity_item_array
   end
 
   def update
-      @cart = current_user_cart
-      @item = current_item
+    @cart = current_user_cart
+    @item = current_item
+    @select = selected_item_in_cart
 
-      if JoinCartItem.exists?(item_id: @item.id, cart_id: @cart.id) == false
-        JoinCartItem.create(cart_id: @cart.id, item_id: @item.id)
+    item = JoinCartItem.find_by(cart_id: @cart.id, item_id: @item.id)
 
-        flash[:succes] = "Ajouté au panier"
-      #  redirect_to(item_path(@item))
-            respond_to do |format|
-              format.html { redirect_to root_path }
-              format.js { }
-            end
-      else
-        flash[:alerte] = "Déjà dans le panier"
-        redirect_to(item_path(@item))
-      end
+    if item
+      item.quantity = ((item.quantity) + 1)
+      item.save
+      flash[:succes] = "Ajouté au panier"
+        respond_to do |format|
+          format.html { redirect_to root_path }
+          format.js { }
+        end
+    else
+      JoinCartItem.create(cart_id: @cart.id, item_id: @item.id, quantity: 1)
+      flash[:succes] = "Ajouté au panier"
+        respond_to do |format|
+          format.html { redirect_to root_path }
+          format.js { }
+        end
+    end
+  end
+
+  def appel(arg)
+    return JoinCartItem.find_by(cart_id: current_or_guest_user.id, item_id: arg.id)
   end
 
   def destroy
@@ -48,13 +59,27 @@ class CartsController < ApplicationController
 
   def only_price_array
     items = all_items
+    quantities = cart_quantity_item_array
 
     items_price = []
-    items.each do |item_price|
-      items_price << item_price.price
+    items.each_with_index do |item_price, index|
+      items_price << (item_price.price) * quantities[index]
     end
 
     return items_price
+  end
+
+  def cart_quantity_item_array
+    cu = Cart.find_by(user_id: current_or_guest_user.id)
+    join_cart = JoinCartItem.where(cart_id: cu.id)
+
+    @quantity_array = []
+
+    join_cart.each do |join|
+      @quantity_array << join.quantity
+    end
+
+    return @quantity_array
   end
 
   #########################
