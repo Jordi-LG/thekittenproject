@@ -59,4 +59,7 @@ i=0
     item.save
 end
 puts "Items created"
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+puts "Admin Created"
