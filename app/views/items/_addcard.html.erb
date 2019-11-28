@@ -1,0 +1,7 @@
+<div class='alert alert-dismissible bg-white' style= 'opacity:95%'>
+  <%= form_with(url: cart_path('@item.id'), method: 'patch') do %>
+    <%= button_tag(type: 'submit', class: 'btn btn-default') do %>
+      <span class='btn btn-button btn-primary' ><i class='fas fa-cart-arrow-down pr-2'></i> Add to cart !</span>
+    <% end %>
+  <% end %>
+</div>
