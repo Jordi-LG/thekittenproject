@@ -16,5 +16,5 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap.bundle
+//= he
 //= require_tree .
-
