@@ -7,26 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 image_url = [
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/399dced154b7acf2f50572240fd13.jpeg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/arriv%C3%A9e-dun-chaton-%C3%A0-la-maison-768x547.jpeg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/chat3.png",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat-3535404_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat-4142764_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat-4262702_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat-4282072_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cat-baby-4208540_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/chat-chaton-animaux-domestiques.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/chaton-fb-59413483eb29f.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/chaton-jouets-fb-59a3ea83c1a7d.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/chaton-mignon-bebe-chat.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cover-r4x3w1000-5c936acd26314-kitten-1517537-1920.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/cover-r4x3w1000-5c98c40f5bf3d-cat-3535399-1920.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/e51030a829fb07599a18d389f9e8-1583591.jpg!d.jpeg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/europe_southfrance_s_dfrankreich_zuidfrankrijk_midi_m_diterran_e_languedocroussillon_languedoc-168794.jpg!d.jpeg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/fotolia_161972413_m-1.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/kitten-3422770_960_720.jpg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/petition-img-72960-fr.png.jpeg",
-"https://active-storage-thp-cat.s3-us-west-1.amazonaws.com/photo+en+vente/sevrage-chaton-141629.jpg"
+"https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+"https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?cs=srgb&dl=pexels-pixabay-416160.jpg&fm=jpg",
+"https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?cs=srgb&dl=pexels-pixabay-45201.jpg&fm=jpg",
+"https://images.pexels.com/photos/290164/pexels-photo-290164.jpeg?cs=srgb&dl=pexels-pixabay-290164.jpg&fm=jpg",
+"https://images.pexels.com/photos/1870376/pexels-photo-1870376.jpeg?cs=srgb&dl=pexels-larissa-barbosa-1870376.jpg&fm=jpg",
+"https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg?cs=srgb&dl=pexels-tranmautritam-2061057.jpg&fm=jpg",
+"https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?cs=srgb&dl=pexels-vadim-b-127028.jpg&fm=jpg",
+"https://images.pexels.com/photos/257532/pexels-photo-257532.jpeg?cs=srgb&dl=pexels-pixabay-257532.jpg&fm=jpg",
+"https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?cs=srgb&dl=pexels-ihsan-aditya-1056251.jpg&fm=jpg",
+"https://images.pexels.com/photos/127027/pexels-photo-127027.jpeg?cs=srgb&dl=pexels-vadim-b-127027.jpg&fm=jpg",
+"https://images.pexels.com/photos/735423/pexels-photo-735423.jpeg?cs=srgb&dl=pexels-eftodii-aurelia-735423.jpg&fm=jpg",
+"https://images.pexels.com/photos/1472999/pexels-photo-1472999.jpeg?cs=srgb&dl=pexels-alex-bargain-1472999.jpg&fm=jpg",
+"https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?cs=srgb&dl=pexels-tranmautritam-2194261.jpg&fm=jpg"
+
+
+
+
+
 ]
 prices = [9.99, 10.99, 11.99, 12.99, 13.99, 14.99, 15.99, 16.99, 17.99, 18.99, 19.99]
 
